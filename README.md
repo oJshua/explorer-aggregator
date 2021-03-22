@@ -1,4 +1,4 @@
-# @solana/explorer-aggregator
+# @solana/explorer-aggregator (POC)
 
 ## Installation
 
