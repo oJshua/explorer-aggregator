@@ -5,6 +5,9 @@ import { ConfirmedBlockSubscription } from "../subscriptions/ConfirmedBlockSubsc
 const K = 20;
 const DECAY = 0.9;
 
+/**
+ * Just a proof of concept
+ */
 export class TopPrograms {
   static readonly filter = new TopKFilter("top-programs", {
     host: process.env.REDIS_HOST,
@@ -21,7 +24,9 @@ export class TopPrograms {
         Math.max(5, Math.round(Math.log(K))),
         DECAY
       );
-    } catch (error) {}
+    } catch (error) {
+      console.error(error); // TODO: Handle this, likely already initialized
+    }
 
     ConfirmedBlockSubscription.getObservable().subscribe((block) => {
       const transactions = block.transactions;
@@ -29,13 +34,17 @@ export class TopPrograms {
         try {
           const address = transaction.transaction.programId.toBase58();
           this.filter.add(address, 1);
-        } catch (error) {}
+        } catch (error) {
+          // some toBase58()s are failing
+        }
 
         for (let instruction of transaction.transaction.instructions) {
           try {
             const address = instruction.programId.toBase58();
             this.filter.add(address, 1);
-          } catch (error) {}
+          } catch (error) {
+            // some toBase58()s are failing
+          }
         }
       }
     });
