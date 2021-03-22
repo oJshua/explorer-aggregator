@@ -7,7 +7,7 @@ COPY package-lock.json .
 COPY tsconfig.json .
 COPY tsoa.json .
 
-RUN npm install
+RUN npm install --loglevel verbose
 
 COPY ./src ./src
 RUN npm run build

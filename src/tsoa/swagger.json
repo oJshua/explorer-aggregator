@@ -16,8 +16,7 @@
 					}
 				},
 				"required": [
-					"address",
-					"name"
+					"address"
 				],
 				"type": "object",
 				"additionalProperties": false
