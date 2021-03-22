@@ -21,7 +21,7 @@ export class TopPrograms {
       await this.filter.reserve(
         K,
         Math.round(K * Math.log2(K)),
-        Math.max(5, Math.round(Math.log(K))),
+        Math.max(5, Math.round(Math.log2(K))),
         DECAY
       );
     } catch (error) {
