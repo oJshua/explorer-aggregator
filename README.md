@@ -5,13 +5,14 @@
 `
 npm install
 `
+See Docker Compose for dependencies / environment variables. 
 
 ## Build
 `
 npm run build
 `
 
-## Generate Routes and Swagger JSON
+## Generate Routes and OpenAPI JSON
 `
 npm run swagger
 `
